@@ -1,59 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sh1.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/02/12 15:11:30 by avallete          #+#    #+#             */
+/*   Updated: 2015/02/12 19:27:44 by avallete         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <ft_sh.h>
-
-void	clear_cmd(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '\t')
-			str[i] = ' ';
-		i++;
-	}
-}
-
-char	**ft_wait_cmd(void)
-{
-	char	*buf;
-
-	while (!(get_next_line(1, &buf)))
-		get_next_line(1, &buf);
-	clear_cmd(buf);
-	return (ft_strsplit(buf, ' '));
-}
-
-void	ft_init_cmd(t_env *env)
-{
-	int e;
-
-	e = 0;
-	env->cmd.arg = ft_wait_cmd();
-	while (env->cmd.arg[e])
-		e++;
-	env->cmd.nb = e;
-}
-
-void	print_inv(void)
-{
-	t_env env;
-	int		e;
-
-	e = 0;
-	ft_putstr("$> ");
-	ft_init_cmd(&env);
-	while (env.cmd.arg[e])
-	{
-		ft_putendl(env.cmd.arg[e]);
-		e++;
-	}
-}
 
 int		main(void)
 {
+	t_env	env;
+
+	env.cmd = NULL;
+	env.infos = NULL;
+	free_split((ft_strsplit("woifj oiwjf oiwjfoi owifj ", ' ')));
+	free_split((ft_strsplit("woifj oiwjf oiwjfoi owifj ", ' ')));
+	free_split((ft_strsplit("woifj oiwjf oiwjfoi owifj ", ' ')));
+	free_split((ft_strsplit("woifj oiwjf oiwjfoi owifj ", ' ')));
 	while (1)
 	{
-		print_inv();
 	}
+	//	print_inv(&env);
 	return (0);
 }

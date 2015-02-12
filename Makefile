@@ -1,5 +1,6 @@
 SRC_PATH:=./src/
-SRC_NAME:=ft_sh1.c
+SRC_NAME:=ft_sh1.c\
+		prompt.c
 CFLAGS=-Wall -Wextra -Werror
 OBJ_PATH =./obj/
 OBJ_NAME=$(SRC_NAME:.c=.o)
@@ -29,10 +30,15 @@ $(NAME):$(OBJ)
 	@echo "${RED}Compile $(NAME) with $(CFLAGS)${NC}";
 	@gcc $(CLFAGS) $(OBJ) $(INC) $(LIBFT) -o $(NAME)
 
+easy:$(OBJ)
+	@make -s -C libft
+	@echo "${RED}Compile $(NAME) with $(CFLAGS)${NC}";
+	@gcc $(OBJ) $(INC) $(LIBFT) -o $(NAME)
+
 $(OBJ_PATH)%.o:$(SRC_PATH)%.c
 	@mkdir -p $(OBJ_PATH)
 	@echo "${ORANGE}Create bynary $@ with $<${NC}";
-	@$(CC) $(CFLAGS) $(INC) -o $@ -c $<
+	@$(CC) $(INC) -o $@ -c $<
 
 clean:
 	@echo "${CYAN}Delete OBJ files${NC}"
