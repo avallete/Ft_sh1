@@ -31,9 +31,25 @@ t_cmd	*cmd_new(char **args, int nb)
 
 	cmd = (t_cmd*)malloc(sizeof(t_cmd));
 	cmd->arg = create_arg(args, nb);
+	free(*args);
 	cmd->next = NULL;
 	cmd->pipe = NULL;
 	return (cmd);
+}
+
+void	pipe_pushback(char **args, int nb, t_cmd **cmd)
+{
+	t_cmd *tmp;
+
+	if (*cmd)
+	{
+		tmp = *cmd;
+		while (tmp->pipe)
+			tmp = tmp->pipe;
+		tmp->pipe = cmd_new(args, nb);
+	}
+	else
+		*cmd = cmd_new(args, nb);
 }
 
 void	cmd_pushback(char **args, int nb, t_cmd **cmd)
@@ -57,10 +73,8 @@ void	ft_wait_cmd(t_env *env, char **buf, int mode)
 
 	if (env->cmd && mode)
 	{
-		while (env->cmd->pipe)
-			env->cmd = env->cmd->pipe;
 		if (buf && *buf)
-			cmd_pushback(buf, i, &env->cmd->pipe);
+			pipe_pushback(buf, i, &env->cmd->pipe);
 	}
 	else if (buf && *buf)
 		cmd_pushback(buf, i, &env->cmd), i++;
@@ -83,13 +97,35 @@ void	free_split(char **split)
 	}
 }
 
+void	free_arg(t_arg *arg)
+{
+	if (arg->arg)
+		free_split(arg->arg);
+	if (arg)
+		free(arg);
+	arg = NULL;
+}
+
 void	free_pipe(t_cmd *cmd)
 {
 	if (cmd->pipe)
 		free_pipe(cmd->pipe);
-	free_split(&cmd->arg->arg);
-	free(cmd->pipe);
-	cmd->pipe = NULL;
+	free_arg(cmd->arg);
+	if (cmd)
+		free(cmd);
+	cmd = NULL;
+}
+
+void	free_cmd(t_cmd *cmd)
+{
+	if (cmd->next)
+		free_cmd(cmd->next);
+	if (cmd->pipe)
+		free_pipe(cmd->pipe);
+	free_arg(cmd->arg);
+	if (cmd)
+		free(cmd);
+	cmd = NULL;
 }
 
 void	ft_init_cmd(t_env *env)
@@ -101,15 +137,15 @@ void	ft_init_cmd(t_env *env)
 	i = 0;
 	pipe = NULL;
 	buf = NULL;
-//	while (!(get_next_line(0, &buf)))
-//		get_next_line(0, &buf);
-//	clear_cmd(buf);
-	pipe = ft_strsplit("eofk | oeifjwifj | weijfoiwj f| fweoij", '|');
-	//	while (pipe[i])
-	//		ft_wait_cmd(env, &pipe[i], i), i++;
-	free_split(&pipe);
+	while (!(get_next_line(0, &buf)))
+		get_next_line(0, &buf);
+	clear_cmd(buf);
+	pipe = ft_strsplit(buf, '|');
+	while (pipe[i])
+		ft_wait_cmd(env, &pipe[i], i), i++;
 	if (buf)
 		free(buf);
+	free_split(pipe);
 	buf = NULL;
 }
 
@@ -141,5 +177,6 @@ void	print_inv(t_env *env)
 	 **    tmp = tmp->next;
 	 **}
 	 */
-	//free_pipe(env->cmd);
+	if (env->cmd)
+		free_cmd(env->cmd);
 }

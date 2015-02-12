@@ -13,7 +13,7 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 # include <libft.h>
-# include <LIMITS.h>
+# include <limits.h>
 # include <stdarg.h>
 # define HEXMAJ ("0123456789ABCDEF")
 # define HEXMIN ("0123456789abcdef")

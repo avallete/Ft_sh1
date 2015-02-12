@@ -95,7 +95,7 @@ char					**ft_strsplit(char const *s, char c)
 		return (check_error(s, c));
 	h = ft_nb_words(s, c);
 	l = ft_size_words(s, c, h);
-	if (((result = (char**)malloc(sizeof(char*) * h + 1))))
+	if (((result = (char**)malloc(sizeof(char*) * h))))
 	{
 		result[h] = NULL;
 		i = 0;
@@ -106,9 +106,9 @@ char					**ft_strsplit(char const *s, char c)
 			while (*s == c)
 				s++;
 			ft_memcpy(result[i], s, l[i]);
-			s += l[i];
-			i++;
+			s += l[i++];
 		}
+		free(l);
 	}
 	return (result);
 }

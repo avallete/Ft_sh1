@@ -18,13 +18,6 @@ int		main(void)
 
 	env.cmd = NULL;
 	env.infos = NULL;
-	free_split((ft_strsplit("woifj oiwjf oiwjfoi owifj ", ' ')));
-	free_split((ft_strsplit("woifj oiwjf oiwjfoi owifj ", ' ')));
-	free_split((ft_strsplit("woifj oiwjf oiwjfoi owifj ", ' ')));
-	free_split((ft_strsplit("woifj oiwjf oiwjfoi owifj ", ' ')));
-	while (1)
-	{
-	}
-	//	print_inv(&env);
+	print_inv(&env);
 	return (0);
 }
