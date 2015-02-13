@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 14:41:36 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/12 18:52:56 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/13 11:42:47 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ char					**ft_strsplit(char const *s, char c)
 		return (check_error(s, c));
 	h = ft_nb_words(s, c);
 	l = ft_size_words(s, c, h);
-	if (((result = (char**)malloc(sizeof(char*) * h))))
+	if (((result = (char**)malloc(sizeof(char*) * h + 1))))
 	{
 		result[h] = NULL;
 		i = 0;
@@ -105,8 +105,7 @@ char					**ft_strsplit(char const *s, char c)
 			ft_bzero(result[i], l[i] + 1);
 			while (*s == c)
 				s++;
-			ft_memcpy(result[i], s, l[i]);
-			s += l[i++];
+			ft_memcpy(result[i], s, l[i]), s += l[i++];
 		}
 		free(l);
 	}

@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sh1.c                                           :+:      :+:    :+:   */
+/*   clear_cmd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/12 15:11:30 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/13 12:31:44 by avallete         ###   ########.fr       */
+/*   Created: 2015/02/13 12:33:19 by avallete          #+#    #+#             */
+/*   Updated: 2015/02/13 12:33:40 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_sh.h>
 
-int		main(int ac, char **av, char **env)
+void	clear_cmd(char *str)
 {
-	t_env	e;
-	t_inf	inf;
+	int i;
 
-	if (ac || av)
-		ac = ac;
-	e.cmd = NULL;
-	inf.env = env;
-	e.infos = &inf;
-	while (1)
-		print_inv(&e);
-	return (0);
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '\t')
+			str[i] = ' ';
+		i++;
+	}
 }
