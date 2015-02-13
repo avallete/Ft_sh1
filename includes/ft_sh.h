@@ -5,8 +5,10 @@
 # include <ft_printf.h>
 # include <signal.h>
 # include <sys/types.h>
+# include <sys/param.h>
 # include <sys/wait.h>
 # include <limits.h>
+# define SIZE_ENV (env->infos->size_env)
 
 typedef	struct		s_arg
 {
@@ -24,6 +26,9 @@ typedef	struct		s_cmd
 typedef struct		s_inf
 {
 	char			**env;
+	size_t			size_env;
+	char			**paths;
+	pid_t			father;
 }					t_inf;
 
 typedef struct		s_env
@@ -35,8 +40,6 @@ typedef struct		s_env
 /*
 ** prompt
 */
-
-void	free_split(char **split);
 void	ft_wait_cmd(t_env *env, char **buf);
 void	ft_init_cmd(t_env *env);
 void	clear_cmd(char *str);
@@ -53,14 +56,17 @@ void	cmd_pushback(char **args, int nb, t_cmd **cmd);
 /*
 ** free
 */
-
-void	free_split(char **split);
 void	free_arg(t_arg *arg);
 void	free_cmd(t_cmd *cmd);
 
- /*
- **clear commandes
- */
+/*
+**clear commandes
+*/
 
 void	clear_cmd(char *str);
+
+/*
+** env
+*/
+
 #endif

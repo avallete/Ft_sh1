@@ -41,7 +41,7 @@ easy:$(OBJ)
 $(OBJ_PATH)%.o:$(SRC_PATH)%.c
 	@mkdir -p $(OBJ_PATH)
 	@echo "${ORANGE}Create bynary $@ with $<${NC}";
-	@$(CC) $(INC) -o $@ -c $<
+	@$(CC) $(CFLAGS) $(INC) -o $@ -c $<
 
 clean:
 	@echo "${CYAN}Delete OBJ files${NC}"

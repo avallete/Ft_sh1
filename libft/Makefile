@@ -6,7 +6,7 @@
 #    By: avallete <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/17 11:43:55 by avallete          #+#    #+#              #
-#    Updated: 2015/01/23 14:24:11 by avallete         ###   ########.fr        #
+#    Updated: 2015/02/13 17:37:32 by avallete         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,11 @@ SRC_PATH=./src/
 SRC_NAME=ft_argument.c\
 ft_atoi.c\
 ft_bzero.c\
+ft_tabstrcmp.c\
+ft_splitprint.c\
+ft_splitlen.c\
 ft_calloc.c\
+ft_splitdel.c\
 ft_check.c\
 ft_converter_char.c\
 ft_converter_int.c\

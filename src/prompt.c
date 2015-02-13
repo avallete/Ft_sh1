@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 15:05:22 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/13 12:41:48 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/13 17:39:59 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,24 @@ void	ft_wait_cmd(t_env *env, char **buf)
 		cmd_pushback(buf, i, &env->cmd), i++;
 }
 
-void	read_list(t_cmd *list)
+void	ft_print_split(char **split)
 {
 	int i;
 
-	while (list)
+	i = 0;
+	while (split[i])
+		ft_printf("%s\n", split[i++]);
+}
+
+void	read_list(t_env *env, t_cmd *list)
+{
+	if (list)
 	{
-		i = 0;
-		ft_putchar('\n');
-		list = list->next;
+		env->infos->father = fork();
+		if (env->infos->father > 0)
+			execve("/bin/ls", list->arg->arg, env->infos->env);
+		if (list->next && env->infos->father == 0)
+			read_list(env, list->next);
 	}
 }
 
@@ -36,7 +45,6 @@ void	ft_init_cmd(t_env *env)
 {
 	char	*buf;
 	char	**pipe;
-	t_cmd	*tmp;
 	int		i;
 
 	i = 0;
@@ -48,9 +56,8 @@ void	ft_init_cmd(t_env *env)
 	pipe = ft_strsplit(buf, ';');
 	while (pipe[i])
 		ft_wait_cmd(env, &pipe[i]), i++;
-	read_list(env->cmd);
 	if (pipe)
-		free_split(pipe);
+		ft_splitdel(pipe);
 	if (buf)
 		free(buf);
 	buf = NULL;
@@ -58,10 +65,10 @@ void	ft_init_cmd(t_env *env)
 
 void	print_inv(t_env *env)
 {
-	t_cmd	*tmp;
-
 	ft_putstr("$> ");
 	ft_init_cmd(env);
+	if (env->infos->father == 0)
+		read_list(env, env->cmd);
 	if (env->cmd)
 		free_cmd(env->cmd);
 	env->cmd = NULL;

@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_splitlen.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/13 12:18:18 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/13 17:37:38 by avallete         ###   ########.fr       */
+/*   Created: 2015/02/13 17:33:10 by avallete          #+#    #+#             */
+/*   Updated: 2015/02/13 17:34:29 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_sh.h>
+#include <libft.h>
 
-void	free_arg(t_arg *arg)
+size_t	ft_splitlen(char **env)
 {
-	if (arg->arg)
-		ft_splitdel(arg->arg);
-	if (arg)
-		free(arg);
-	arg = NULL;
+	size_t i;
+
+	i = 0;
+	if (env)
+		while (env[i])
+			i++;
+	return (i);
 }
-
-void	free_cmd(t_cmd *cmd)
-{
-	if (cmd->next)
-		free_cmd(cmd->next);
-	if (cmd)
-		free_arg(cmd->arg), free(cmd);
-	cmd = NULL;
-}
-
-
