@@ -3,6 +3,8 @@ SRC_NAME:=ft_sh1.c\
 		free.c\
 		create_cmd.c\
 		clear_cmd.c\
+		set_env.c\
+		ft_unsetenv.c\
 		prompt.c
 CFLAGS=-Wall -Wextra -Werror
 OBJ_PATH =./obj/

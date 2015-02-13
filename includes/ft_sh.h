@@ -66,7 +66,15 @@ void	free_cmd(t_cmd *cmd);
 void	clear_cmd(char *str);
 
 /*
-** env
+**set_env
 */
 
+char	**copy_env(char **env, size_t size);
+void	ft_setenv(t_env *env, char *key, char *value);
+void	ft_recreatenv(t_env *env, char *str);
+
+/*
+** unset env
+*/
+void	ft_unsetenv(t_env *env, char *key);
 #endif
