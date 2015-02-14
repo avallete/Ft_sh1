@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 14:41:54 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/14 14:20:05 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/14 18:27:13 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ size_t				ft_lstsize(t_list *list);
 /*
 ** Split functions
 */
-int					ft_tabstrcmp(char **tab, char *str);
+int					ft_tabstrcmp(char **tab, char *str, size_t size);
 char				**ft_strsplit(char const *s, char c);
 size_t				ft_splitlen(char **env);
 void				ft_splitdel(char **split);

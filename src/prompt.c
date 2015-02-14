@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 15:05:22 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/14 15:32:51 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/14 18:41:16 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	ft_init_cmd(t_env *env)
 
 void	print_inv(t_env *env)
 {
+	rescue_env(env);
 	ft_putstr("$> ");
 	ft_init_cmd(env);
 	read_list(env, env->cmd);

@@ -8,6 +8,7 @@
 # include <sys/param.h>
 # include <sys/wait.h>
 # include <limits.h>
+# include <fcntl.h>
 # include <errno.h>
 # define SIZE_ENV	(env->infos->size_env)
 # define C_ENV		env->infos->env
@@ -92,6 +93,13 @@ void	ft_recreatenv(t_env *env, char *str);
 ** unset env
 */
 void	ft_unsetenv(t_env *env, char *key);
+int		ft_findkey(char **tab, char *str);
+
+/*
+** Env rescue
+*/
+void	found_pathrescue(t_env *env);
+void	rescue_env(t_env *env);
 
 /*
 ** Buitins
