@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 14:41:54 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/14 12:45:03 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/14 14:20:05 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,4 +141,5 @@ char				**ft_strsplit(char const *s, char c);
 size_t				ft_splitlen(char **env);
 void				ft_splitdel(char **split);
 char				**ft_resizesplit(char **src, size_t begin, size_t end);
+void				split_iter(char **split, void *(*f)(char *str));
 #endif

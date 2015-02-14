@@ -20,6 +20,9 @@
 
 # define ENAMEFORM(x) (ft_putsterr(x), ft_putsterr(":"))
 # define ETOOMANYARG(x) (ENAMEFORM(x), ft_puterrdl(" Too many arguments."))
+# define ETOOFEWARG(x) (ENAMEFORM(x), ft_puterrdl(" Too few arguments."))
+# define ENAMETOOLON(x) (ENAMEFORM(x), ft_puterrdl(" File name too long."))
+# define EPATHTOOLON(x) (ENAMEFORM(x), ft_puterrdl(" Path name too long."))
 
 
 typedef	struct		s_arg
@@ -89,4 +92,17 @@ void	ft_recreatenv(t_env *env, char *str);
 ** unset env
 */
 void	ft_unsetenv(t_env *env, char *key);
+
+/*
+** Buitins
+*/
+char	check_builtin(t_env *env, t_cmd *list);
+char	check_env(t_env *env, t_cmd *list);
+char	check_setenv(t_env *env, t_cmd *list);
+
+/*
+** Errors
+*/
+char	check_toolongarg(char **cmd);
+char	*format_envval(char *key, char *value);
 #endif

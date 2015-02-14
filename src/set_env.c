@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:45:38 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/13 19:08:33 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/14 15:27:35 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,13 @@
 
 void	ft_setenv(t_env *env, char *key, char *value)
 {
-	char *tmp;
-	char *join;
-	int	i;
+	int		i;
+	char	*join;
+	char	*tmp;
 
 	i = 0;
-	join = ft_strjoin(key, "=");
-	tmp = join;
-	join = ft_strjoin(join, value);
-	free(tmp);
-	if (env->infos->env)
+	join = format_envval(key, value);
+	if (env->infos->env && join)
 	{
 		if (((i = ft_tabstrcmp(env->infos->env, key)) == -1))
 			ft_recreatenv(env, join);

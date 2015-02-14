@@ -6,7 +6,7 @@
 #    By: avallete <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/17 11:43:55 by avallete          #+#    #+#              #
-#    Updated: 2015/02/14 12:44:47 by avallete         ###   ########.fr        #
+#    Updated: 2015/02/14 14:20:25 by avallete         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ ft_splitlen.c\
 ft_calloc.c\
 ft_splitdel.c\
 ft_resizesplit.c\
+ft_splititer.c\
 ft_putsterr.c\
 ft_puterrdl.c\
 ft_check.c\

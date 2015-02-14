@@ -1,17 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_errors.h                                        :+:      :+:    :+:   */
+/*   ft_splititer.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/14 12:31:56 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/14 12:34:24 by avallete         ###   ########.fr       */
+/*   Created: 2015/02/14 14:19:43 by avallete          #+#    #+#             */
+/*   Updated: 2015/02/14 14:20:10 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_ERRORS_H
-# define FT_ERRORS_H
-# include <errno.h>
-# define ETOOMANYARG 42
-#endif
+#include <libft.h>
+
+void	split_iter(char **split, void *(*f)(char *str))
+{
+	int i;
+
+	i = 0;
+	if (split)
+	{
+		while (split[i])
+			f(split[i]), i++;
+	}
+}
