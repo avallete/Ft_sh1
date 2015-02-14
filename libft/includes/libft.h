@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 14:41:54 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/13 17:37:41 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/14 12:45:03 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
+#define FT_ABS(x)  (((x) < 0) ? -(x) : (x))
 
 typedef struct		s_list
 {
@@ -73,6 +74,8 @@ void				ft_putendl_fd(char const *s, int fd);
 void				ft_putstr(char const *s);
 void				ft_putstr_fd(char const *s, int fd);
 void				ft_splitprint(char **split);
+void				ft_putsterr(char *str);
+void				ft_puterrdl(char *str);
 
 /*
 ** Tree Functions
@@ -137,4 +140,5 @@ int					ft_tabstrcmp(char **tab, char *str);
 char				**ft_strsplit(char const *s, char c);
 size_t				ft_splitlen(char **env);
 void				ft_splitdel(char **split);
+char				**ft_resizesplit(char **src, size_t begin, size_t end);
 #endif

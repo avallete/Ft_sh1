@@ -8,7 +8,10 @@
 # include <sys/param.h>
 # include <sys/wait.h>
 # include <limits.h>
-# define SIZE_ENV (env->infos->size_env)
+# define SIZE_ENV	(env->infos->size_env)
+# define C_ENV		env->infos->env
+# define C_EARG		env->cmd->arg->arg
+# define C_CARG(x)		x->arg->arg
 
 typedef	struct		s_arg
 {

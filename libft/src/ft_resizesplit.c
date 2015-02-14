@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sh1.c                                           :+:      :+:    :+:   */
+/*   ft_resizesplit.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/12 15:11:30 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/14 12:09:21 by avallete         ###   ########.fr       */
+/*   Created: 2015/02/14 12:06:32 by avallete          #+#    #+#             */
+/*   Updated: 2015/02/14 12:08:50 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_sh.h>
+#include <libft.h>
 
-int		main(int ac, char **av, char **env)
+char	**ft_resizesplit(char **src, size_t begin, size_t end)
 {
-	t_env	e;
-	t_inf	inf;
+	char **new;
+	int	size;
+	int	i;
 
-	if (ac || av)
-		ac = ac;
-	e.cmd = NULL;
-	inf.size_env = ft_splitlen(env);
-	inf.env = copy_env(env, inf.size_env);
-	inf.father = 0;
-	e.infos = &inf;
-	while (1)
-		print_inv(&e);
-	if (inf.paths)
-		ft_splitdel(inf.paths);
-	return (0);
+	i = 0;
+	size = end - begin;
+	size = FT_ABS(size);
+	new = (char**)malloc(sizeof(char*) * size + 1);
+	while (src[begin] && i < size)
+		new[i] = ft_strdup(src[begin++]), i++;
+	ft_splitdel(src);
+	new[size] = NULL;
+	return (new);
 }
