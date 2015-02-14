@@ -8,10 +8,19 @@
 # include <sys/param.h>
 # include <sys/wait.h>
 # include <limits.h>
+# include <errno.h>
 # define SIZE_ENV	(env->infos->size_env)
 # define C_ENV		env->infos->env
 # define C_EARG		env->cmd->arg->arg
 # define C_CARG(x)		x->arg->arg
+
+/*
+**	ERROR macro
+*/
+
+# define ENAMEFORM(x) (ft_putsterr(x), ft_putsterr(":"))
+# define ETOOMANYARG(x) (ENAMEFORM(x), ft_puterrdl(" Too many arguments."))
+
 
 typedef	struct		s_arg
 {

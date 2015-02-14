@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 15:05:22 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/14 12:44:10 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/14 13:07:11 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,6 @@ void	ft_wait_cmd(t_env *env, char **buf)
 		cmd_pushback(buf, i, &env->cmd), i++;
 }
 
-void	ft_perror(int err)
-{
-}
-
 char	check_setenv(t_env *env, t_cmd *list)
 {
 	char ret;
@@ -31,16 +27,19 @@ char	check_setenv(t_env *env, t_cmd *list)
 	ret = 0;
 	if ((!(ft_strcmp("setenv", *C_CARG(list)))))
 	{
-		if (C_CARG(list)[1] == NULL)
-			ft_splitprint(C_ENV), ret = 1;
-		else if (C_CARG(list)[1] && C_CARG(list)[2])
-			ft_setenv(env, C_CARG(list)[1], C_CARG(list)[2]), ret = 1;
-		else if (C_CARG(list)[1] && (!(C_CARG(list)[2])))
-			ft_setenv(env, C_CARG(list)[1], ""), ret = 1;
+		if (ft_splitlen(C_CARG(list)) < 4)
+		{
+			if (C_CARG(list)[1] == NULL)
+				ft_splitprint(C_ENV);
+			else if (C_CARG(list)[1] && C_CARG(list)[2])
+				ft_setenv(env, C_CARG(list)[1], C_CARG(list)[2]);
+			else if (C_CARG(list)[1] && (!(C_CARG(list)[2])))
+				ft_setenv(env, C_CARG(list)[1], "");
+		}
 		else
-			ret = 0;
+			ETOOMANYARG("setenv");
+		ret = 1;
 	}
-	ft_splitprint(C_ENV);
 	return (ret);
 }
 
@@ -55,7 +54,7 @@ char	check_env(t_env *env, t_cmd *list)
 			ft_splitprint(C_ENV), (ret = 1);
 		else
 			(C_CARG(list) = ft_resizesplit(C_CARG(list), 1, \
-			ft_splitlen(C_CARG(list))));
+										   ft_splitlen(C_CARG(list))));
 	}
 	return (ret);
 }
@@ -67,9 +66,9 @@ char	check_buitin(t_env *env, t_cmd *list)
 	ret = 0;
 	if (list)
 	{
-		if ((ret = (check_setenv(env, list))))
-			return (ret);
 		if ((ret = (check_env(env, list))))
+			return (ret);
+		else if ((ret = (check_setenv(env, list))))
 			return (ret);
 	}
 	return (ret);
