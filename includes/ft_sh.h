@@ -8,6 +8,7 @@
 # include <sys/param.h>
 # include <sys/wait.h>
 # include <limits.h>
+# include <pwd.h>
 # include <fcntl.h>
 # include <errno.h>
 
@@ -106,6 +107,7 @@ int		ft_findkey(char **tab, char *str);
 ** Env rescue
 */
 void	found_pathrescue(t_env *env);
+void	found_pwdrescue(t_env *env);
 void	rescue_env(t_env *env);
 
 /*

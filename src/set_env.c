@@ -26,8 +26,7 @@ void	ft_setenv(t_env *env, char *key, char *value)
 			ft_recreatenv(env, join);
 		else
 		{
-			if (env->infos->env[i])
-				tmp = env->infos->env[i];
+			tmp = env->infos->env[i];
 			env->infos->env[i] = ft_strdup(join);
 			if (tmp)
 				free(tmp);

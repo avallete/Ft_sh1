@@ -17,22 +17,51 @@ void	found_pathrescue(t_env *env)
 	int fd;
 	int ret;
 	int i;
-	char buf[ENAMETOOLONG];
+	char buf[PATH_MAX];
 
 	i = 0;
-	ft_bzero(buf, ENAMETOOLONG);
+	ft_bzero(buf, PATH_MAX);
 	ret = -1;
 	fd = -1;
 	if ((fd = open("/etc/paths", O_RDONLY)) > -1)
-		ret = read(fd, buf, ENAMETOOLONG);
+		ret = read(fd, buf, PATH_MAX);
 	if (ret > -1)
 	{
 		while (buf[i])
 			buf[i] == '\n' ? (buf[i] = ':'), i++ : i++;
 		ft_setenv(env, "PATH", buf);
 	}
+	ft_bzero(buf, PATH_MAX);
 	if (fd > -1)
 		close(fd);
+}
+
+void	found_pwdrescue(t_env *env)
+{
+	char buf[PATH_MAX];
+
+	if (!(getcwd(buf, PATH_MAX)))
+		ENAMETOOLON("PWD");
+	else
+		ft_setenv(env, "PWD", buf);
+}
+
+void	found_homerescue(t_env *env)
+{
+	struct passwd *home;
+
+	home = getpwuid(getuid());
+	if (home)
+		ft_setenv(env, "HOME", home->pw_dir);
+}
+
+void	found_usernamerescue(t_env *env)
+{
+	struct passwd *home;
+
+	home = getpwuid(getuid());
+	if (home)
+		ft_setenv(env, "USERNAME", "Un test");
 }
 
 void	rescue_env(t_env *env)
@@ -42,11 +71,15 @@ void	rescue_env(t_env *env)
 	i = 0;
 	if (C_ENV)
 	{
-		if ((i = ft_findkey(env->infos->env, "PATH=")) == -1)
+		if ((i = ft_findkey(env->infos->env, "PATH")) == -1)
 			found_pathrescue(env);
+		if ((i = ft_findkey(env->infos->env, "PWD")) == -1)
+			found_pwdrescue(env);
+		if ((i = ft_findkey(env->infos->env, "HOME")) == -1)
+			found_homerescue(env);
+//		if ((i = ft_findkey(env->infos->env, "USERNAME")) == -1)
+//			found_usernamerescue(env);
 	}
-	//	else
-	//		create_env(*env);
 }
 
 

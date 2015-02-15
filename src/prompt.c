@@ -22,10 +22,14 @@ void	ft_wait_cmd(t_env *env, char **buf)
 
 void	read_list(t_env *env, t_cmd *list)
 {
+	char ret;
+
+	ret = 1;
 	init_path(env);
 	if (list)
 	{
-		if (!(check_builtin(env, list)))
+		ret = check_builtin(env, list);
+		if (ret < 1)
 		{
 			env->infos->father = fork();
 			if (!(check_toolongarg(C_CARG(list))))
@@ -34,7 +38,7 @@ void	read_list(t_env *env, t_cmd *list)
 					execve("/bin/echo", C_CARG(list), C_ENV);
 			}
 		}
-		if (list->next && env->infos->father == 0)
+		if (list->next)
 			read_list(env, list->next);
 	}
 }
