@@ -1,5 +1,7 @@
 #include <ft_sh.h>
 
+
+
 void	init_path(t_env *env)
 {
 	char	*envpath;

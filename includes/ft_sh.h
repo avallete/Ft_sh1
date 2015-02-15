@@ -9,6 +9,7 @@
 # include <sys/wait.h>
 # include <limits.h>
 # include <pwd.h>
+# include <dirent.h>
 # include <fcntl.h>
 # include <errno.h>
 

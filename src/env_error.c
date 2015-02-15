@@ -58,10 +58,12 @@ void	found_homerescue(t_env *env)
 void	found_usernamerescue(t_env *env)
 {
 	struct passwd *home;
+	char		*name;
 
 	home = getpwuid(getuid());
-	if (home)
-		ft_setenv(env, "USERNAME", "Un test");
+	name = ft_strdup(home->pw_name);
+	if (name)
+		ft_setenv(env, "USERNAME", name), free(name);
 }
 
 void	rescue_env(t_env *env)
@@ -77,8 +79,8 @@ void	rescue_env(t_env *env)
 			found_pwdrescue(env);
 		if ((i = ft_findkey(env->infos->env, "HOME")) == -1)
 			found_homerescue(env);
-//		if ((i = ft_findkey(env->infos->env, "USERNAME")) == -1)
-//			found_usernamerescue(env);
+		if ((i = ft_findkey(env->infos->env, "USERNAME")) == -1)
+			found_usernamerescue(env);
 	}
 }
 
