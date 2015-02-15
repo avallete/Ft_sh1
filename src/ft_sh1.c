@@ -23,6 +23,7 @@ int		main(int ac, char **av, char **env)
 	inf.size_env = ft_splitlen(env);
 	inf.env = copy_env(env, inf.size_env);
 	inf.father = 0;
+	inf.paths = NULL;
 	e.infos = &inf;
 	while (1)
 		print_inv(&e);

@@ -8,6 +8,7 @@ SRC_NAME:=ft_sh1.c\
 		errors.c\
     	ft_builtin.c\
     	env_error.c\
+    	ft_path.c\
 		prompt.c
 CFLAGS=-Wall -Wextra -Werror
 OBJ_PATH =./obj/

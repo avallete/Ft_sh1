@@ -10,10 +10,16 @@
 # include <limits.h>
 # include <fcntl.h>
 # include <errno.h>
+
+/*
+**	Cast macro for more easy access of struct elements
+*/
+
 # define SIZE_ENV	(env->infos->size_env)
 # define C_ENV		env->infos->env
 # define C_EARG		env->cmd->arg->arg
 # define C_CARG(x)		x->arg->arg
+# define C_CPATH		env->infos->paths
 
 /*
 **	ERROR macro
@@ -113,4 +119,9 @@ char	check_setenv(t_env *env, t_cmd *list);
 */
 char	check_toolongarg(char **cmd);
 char	*format_envval(char *key, char *value);
+
+/*
+** Path sort/create/format/research
+*/
+void	init_path(t_env *env);
 #endif

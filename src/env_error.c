@@ -22,6 +22,7 @@ void	found_pathrescue(t_env *env)
 	i = 0;
 	ft_bzero(buf, ENAMETOOLONG);
 	ret = -1;
+	fd = -1;
 	if ((fd = open("/etc/paths", O_RDONLY)) > -1)
 		ret = read(fd, buf, ENAMETOOLONG);
 	if (ret > -1)
@@ -30,7 +31,8 @@ void	found_pathrescue(t_env *env)
 			buf[i] == '\n' ? (buf[i] = ':'), i++ : i++;
 		ft_setenv(env, "PATH", buf);
 	}
-	close(fd);
+	if (fd > -1)
+		close(fd);
 }
 
 void	rescue_env(t_env *env)

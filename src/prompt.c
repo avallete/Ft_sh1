@@ -22,6 +22,7 @@ void	ft_wait_cmd(t_env *env, char **buf)
 
 void	read_list(t_env *env, t_cmd *list)
 {
+	init_path(env);
 	if (list)
 	{
 		if (!(check_builtin(env, list)))

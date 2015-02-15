@@ -46,7 +46,7 @@ char	check_env(t_env *env, t_cmd *list)
 			ft_splitprint(C_ENV), (ret = 1);
 		else
 			(C_CARG(list) = ft_resizesplit(C_CARG(list), 1, \
-										   ft_splitlen(C_CARG(list))));
+			   ft_splitlen(C_CARG(list))));
 	}
 	return (ret);
 }

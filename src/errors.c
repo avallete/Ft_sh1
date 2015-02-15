@@ -35,15 +35,15 @@ char	*format_envval(char *key, char *value)
 	size_t keylen;
 	size_t vallen;
 
-	(vallen = ft_strlen(value)) >= ENAMETOOLONG ? ENAMETOOLON(value) : 0;
+	(vallen = ft_strlen(value)) >= PATH_MAX ? EPATHTOOLON(value) : 0;
 	join = ft_strjoin(key, "=");
 	(keylen = ft_strlen(join)) >= ENAMETOOLONG ? ENAMETOOLON(key) : 0;
 	tmp = join;
 	join = ft_strjoin(join, value);
 	free(tmp);
-	if (vallen >= ENAMETOOLONG || keylen >= ENAMETOOLONG)
+	if (keylen >= ENAMETOOLONG)
 		free(join), join = NULL;
-	else if (keylen + vallen >= PATH_MAX)
-		EPATHTOOLON(join), free(join), join = NULL;
+	else if (vallen >= PATH_MAX)
+		free(join), join = NULL;
 	return (join);
 }
