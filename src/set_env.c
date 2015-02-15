@@ -26,9 +26,11 @@ void	ft_setenv(t_env *env, char *key, char *value)
 			ft_recreatenv(env, join);
 		else
 		{
-			tmp = env->infos->env[i];
+			if (env->infos->env[i])
+				tmp = env->infos->env[i];
 			env->infos->env[i] = ft_strdup(join);
-			free(tmp);
+			if (tmp)
+				free(tmp);
 		}
 	}
 	if (join)
@@ -61,7 +63,7 @@ char	**copy_env(char **env, size_t size)
 	i = 0;
 	if (env)
 	{
-		ecop = (char**)malloc(sizeof(char*) * size);
+		ecop = (char**)malloc(sizeof(char*) * size + 1);
 		while (env[i])
 			ecop[i] = ft_strdup(env[i]), i++;
 		ecop[size] = NULL;

@@ -70,6 +70,34 @@ char	check_unsetenv(t_env *env, t_cmd *list)
 	return (ret);
 }
 
+char	check_exit(t_env *env, t_cmd *list)
+{
+	char	ret;
+	int	e;
+
+	ret = 0;
+	e = 0;
+	if (list)
+	{
+		if (!(ft_strcmp("exit", *C_CARG(list))))
+		{
+			if (C_CARG(list)[2])
+			{
+				ETOOMANYARG("exit");
+			}
+			else
+			{
+				C_CARG(list)[1] ? (e = ft_atoi(C_CARG(list)[1]))
+				: (e = 0);
+				free_them_all(env);
+				exit(e);
+				ret = 1;
+			}
+		}
+	}
+	return (ret);
+}
+
 char	check_builtin(t_env *env, t_cmd *list)
 {
 	char ret;
@@ -77,7 +105,9 @@ char	check_builtin(t_env *env, t_cmd *list)
 	ret = 0;
 	if (list)
 	{
-		if ((ret = (check_env(env, list))))
+		if ((ret = check_exit(env, list)))
+			return (ret);
+		else if ((ret = (check_env(env, list))))
 			return (ret);
 		else if ((ret = (check_setenv(env, list))))
 			return (ret);
@@ -86,5 +116,3 @@ char	check_builtin(t_env *env, t_cmd *list)
 	}
 	return (ret);
 }
-
-

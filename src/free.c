@@ -12,6 +12,19 @@
 
 #include <ft_sh.h>
 
+void	free_them_all(t_env *env)
+{
+	if (env)
+	{
+		if (C_CPATH)
+			ft_splitdel(C_CPATH);
+		if (env->cmd)
+			free_cmd(env->cmd);
+		if (C_ENV)
+			ft_splitdel(C_ENV);
+	}
+}
+
 void	free_arg(t_arg *arg)
 {
 	if (arg->arg)
@@ -29,5 +42,3 @@ void	free_cmd(t_cmd *cmd)
 		free_arg(cmd->arg), free(cmd);
 	cmd = NULL;
 }
-
-

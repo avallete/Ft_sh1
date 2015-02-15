@@ -80,6 +80,7 @@ void	cmd_pushback(char **args, int nb, t_cmd **cmd);
 */
 void	free_arg(t_arg *arg);
 void	free_cmd(t_cmd *cmd);
+void	free_them_all(t_env *env);
 
 /*
 **clear commandes

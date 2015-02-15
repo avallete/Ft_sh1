@@ -27,7 +27,6 @@ int		main(int ac, char **av, char **env)
 	e.infos = &inf;
 	while (1)
 		print_inv(&e);
-	if (inf.paths)
-		ft_splitdel(inf.paths);
+	free_them_all(&e);
 	return (0);
 }
