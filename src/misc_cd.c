@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 13:23:32 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/16 13:48:14 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/16 18:33:52 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char *make_good_path(char *path)
 		path = ft_strjoin(path, "/");
 		free(tmp);
 	}
-	return (path);
+	return (ft_strdup(path));
 }
 
 /*

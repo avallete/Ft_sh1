@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 14:49:11 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/16 14:49:13 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/16 18:21:53 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,5 @@ void	init_path(t_env *env)
 		envpath = ft_strdup(C_ENV[i] + 5);
 		C_CPATH = ft_strsplit(envpath, ':');
 	}
-	if (envpath)
-		free(envpath), envpath = NULL;
+	ft_secfree(envpath);
 }
