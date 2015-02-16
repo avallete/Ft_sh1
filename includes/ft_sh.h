@@ -70,6 +70,12 @@ void	clear_cmd(char *str);
 void	print_inv(t_env *env);
 
 /*
+** Grep env function
+*/
+char	*key_value(char *env);
+int		ft_findkey(char **tab, char *str);
+
+/*
 ** create_cmd
 */
 
@@ -102,13 +108,28 @@ void	ft_recreatenv(t_env *env, char *str);
 ** unset env
 */
 void	ft_unsetenv(t_env *env, char *key);
-int		ft_findkey(char **tab, char *str);
+
+/*
+** ft_cd
+*/
+int	change_absrep(t_env *env, char *path);
+int	change_relrep(t_env *env, char *path);
+
+/*
+** misc_cd
+*/
+char	*make_good_path(char *path);
+void	go_oldpwd(t_env *env);
+void	go_home(t_env *env);
+void	go_tild(char *tild, t_env *env);
 
 /*
 ** Env rescue
 */
 void	found_pathrescue(t_env *env);
 void	found_pwdrescue(t_env *env);
+void	found_usernamerescue(t_env *env);
+void	found_homerescue(t_env *env);
 void	rescue_env(t_env *env);
 
 /*
@@ -117,6 +138,9 @@ void	rescue_env(t_env *env);
 char	check_builtin(t_env *env, t_cmd *list);
 char	check_env(t_env *env, t_cmd *list);
 char	check_setenv(t_env *env, t_cmd *list);
+char	check_unsetenv(t_env *env, t_cmd *list);
+char	check_cd(t_env *env, t_cmd *list);
+char	check_exit(t_env *env, t_cmd *list);
 
 /*
 ** Errors

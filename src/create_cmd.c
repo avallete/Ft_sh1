@@ -6,11 +6,15 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 11:45:02 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/13 12:17:34 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/16 14:39:08 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include <ft_sh.h>
+
+/*
+**Functions in this file init structure of elements
+*/
 
 t_arg	*create_arg(char **args, int nb)
 {

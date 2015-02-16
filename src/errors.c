@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/14 15:25:05 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/14 18:08:51 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/16 14:48:03 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	check_toolongarg(char **cmd)
 	err = 0;
 	while (cmd[i])
 	{
-		if (ft_strlen(cmd[i]) >= ENAMETOOLONG)
+		if (ft_strlen(cmd[i]) >= PATH_MAX)
 			ENAMETOOLON(cmd[i]), err = 1;
 		i++;
 	}
@@ -37,11 +37,11 @@ char	*format_envval(char *key, char *value)
 
 	(vallen = ft_strlen(value)) >= PATH_MAX ? EPATHTOOLON(value) : 0;
 	join = ft_strjoin(key, "=");
-	(keylen = ft_strlen(join)) >= ENAMETOOLONG ? ENAMETOOLON(key) : 0;
+	(keylen = ft_strlen(join)) >= PATH_MAX ? ENAMETOOLON(key) : 0;
 	tmp = join;
 	join = ft_strjoin(join, value);
 	free(tmp);
-	if (keylen >= ENAMETOOLONG)
+	if (keylen >= PATH_MAX)
 		free(join), join = NULL;
 	else if (vallen >= PATH_MAX)
 		free(join), join = NULL;

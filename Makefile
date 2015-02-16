@@ -1,15 +1,23 @@
 SRC_PATH:=./src/
-SRC_NAME:=ft_sh1.c\
-		free.c\
-		create_cmd.c\
-		clear_cmd.c\
-		set_env.c\
-		ft_unsetenv.c\
-		errors.c\
-    	ft_builtin.c\
-    	env_error.c\
-    	ft_path.c\
-		prompt.c
+SRC_NAME:=check_cd.c\
+    check_env.c\
+    check_exit.c\
+    clear_cmd.c\
+    create_cmd.c\
+    env_error.c\
+    env_rescue.c\
+    errors.c\
+    free.c\
+    ft_builtin.c\
+    ft_cd.c\
+    ft_path.c\
+    ft_sh1.c\
+    ft_unsetenv.c\
+    grep_env.c\
+    misc_cd.c\
+    prompt.c\
+    set_env.c
+ 
 CFLAGS=-Wall -Wextra -Werror
 OBJ_PATH =./obj/
 OBJ_NAME=$(SRC_NAME:.c=.o)
