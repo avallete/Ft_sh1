@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/14 18:08:26 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/14 18:51:05 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/16 11:11:07 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	found_pathrescue(t_env *env)
 
 void	found_pwdrescue(t_env *env)
 {
-	char buf[PATH_MAX];
+	char buf[PATH_MAX + 1];
 
 	if (!(getcwd(buf, PATH_MAX)))
 		ENAMETOOLON("PWD");
@@ -49,10 +49,12 @@ void	found_pwdrescue(t_env *env)
 void	found_homerescue(t_env *env)
 {
 	struct passwd *home;
+	char			*homepath;
 
 	home = getpwuid(getuid());
-	if (home)
-		ft_setenv(env, "HOME", home->pw_dir);
+	homepath = ft_strdup(home->pw_dir);
+	if (homepath)
+		ft_setenv(env, "HOME", homepath), free(homepath);
 }
 
 void	found_usernamerescue(t_env *env)

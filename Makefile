@@ -41,8 +41,13 @@ $(NAME):$(OBJ)
 
 easy:$(OBJ)
 	@make -s -C libft
-	@echo "${RED}Compile $(NAME) with $(CFLAGS)${NC}";
+	@echo "${RED}Compile $(NAME) without $(CFLAGS)${NC}";
 	@gcc $(OBJ) $(INC) $(LIBFT) -o $(NAME)
+
+debug:$(OBJ)
+	@make re -s -C libft
+	@echo "${RED}Compile $(NAME) with -g ${NC}";
+	@gcc -g $(OBJ) $(INC) $(LIBFT) -o $(NAME)
 
 $(OBJ_PATH)%.o:$(SRC_PATH)%.c
 	@mkdir -p $(OBJ_PATH)

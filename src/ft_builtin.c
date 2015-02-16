@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/14 15:31:25 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/14 17:38:14 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/16 11:16:15 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,8 @@ int	check_access(char *path)
 		dir = opendir(path);
 		if (dir != NULL)
 			return (1);
+		if (dir)
+			closedir(dir);
 	}
 	return (0);
 }
@@ -120,7 +122,7 @@ char	*key_value(char *env)
 	if (env[i])
 		return (ft_strdup(env + i));
 	else
-		return (NULL);
+		return (ft_strdup(""));
 }
 
 int	change_absrep(t_env *env, char *path)
@@ -137,8 +139,7 @@ int	change_absrep(t_env *env, char *path)
 		ret = chdir(path);
 	if (ret > -1)
 	{
-		if (ft_strcmp(pwd, path))
-			ft_setenv(env, "OLDPWD", pwd);
+		ft_setenv(env, "OLDPWD", pwd);
 		ft_setenv(env, "PWD", path);
 		free(pwd);
 		return (0);
@@ -174,19 +175,29 @@ int	change_relrep(t_env *env, char *path)
 void	go_oldpwd(t_env *env)
 {
 	int oldpwd;
+	char *oldpwdval;
 
+	oldpwd = -1;
+	oldpwdval = NULL;
 	oldpwd = ft_findkey(C_ENV, "OLDPWD");
 	if (oldpwd > -1)
-		change_absrep(env, C_ENV[oldpwd] + 7);
+		oldpwdval = key_value(C_ENV[oldpwd]);
+	if (oldpwdval)
+		change_absrep(env, oldpwdval), free(oldpwdval), oldpwdval = NULL;
 }
 
 void	go_home(t_env *env)
 {
 	int	home;
+	char *homeval;
 
+	homeval = NULL;
+	home = -1;
 	home = ft_findkey(C_ENV, "HOME");
 	if (home > -1)
-		change_absrep(env, C_ENV[home] + 5);
+		homeval = key_value(C_ENV[home]);
+	if (homeval)
+		change_absrep(env, homeval), free(homeval), homeval = NULL;
 }
 
 char	check_cd(t_env *env, t_cmd *list)
