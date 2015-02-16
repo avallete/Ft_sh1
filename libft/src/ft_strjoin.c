@@ -70,7 +70,7 @@ char			*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	if (s1 != NULL || s2 != NULL)
 	{
-		result = (char*)malloc(sizeof(char) * (ft_lenjoin(s1, s2)) + 1);
+		result = (char*)malloc(sizeof(char) * (ft_lenjoin(s1, s2)));
 		ft_strcpjoin(s1, s2, result);
 	}
 	return (result);

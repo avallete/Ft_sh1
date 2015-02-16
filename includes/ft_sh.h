@@ -37,6 +37,7 @@
 # define EBADFILE(x) (ENAMEFORM(x), ft_puterrdl(" No file or repository."))
 # define EBADDIR(x) (ENAMEFORM(x), ft_puterrdl(" is not a repository."))
 # define EBADLOOP(x) (ENAMEFORM(x), ft_puterrdl(" It's a f***ing loop."))
+# define EINVALCMD(x) (ENAMEFORM(x), ft_puterrdl(" command not found"))
 
 
 typedef	struct		s_arg
@@ -55,7 +56,7 @@ typedef	struct		s_cmd
 typedef struct		s_inf
 {
 	char			**env;
-	size_t			size_env;
+	int			size_env;
 	char			**paths;
 	pid_t			father;
 }					t_inf;
@@ -87,6 +88,13 @@ int		ft_findkey(char **tab, char *str);
 t_arg	*create_arg(char **args, int nb);
 t_cmd	*cmd_new(char **args, int nb);
 void	cmd_pushback(char **args, int nb, t_cmd **cmd);
+
+/*
+** check_cmd
+*/
+char	*find_commande(t_env *env, char *cmd);
+void	check_cmd(t_env *env, t_cmd *list);
+void	read_list(t_env *env, t_cmd *list);
 
 /*
 ** free

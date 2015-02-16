@@ -19,12 +19,12 @@ void	ft_splitdel(char **split)
 	i = 0;
 	if (split)
 	{
-		while ((split)[i])
+		while (((split)[i]) != NULL)
 			i++;
 		while (i > 0)
-			free((split)[i--]);
-		if (split[i])
-			free((split)[i]);
+			free(((split)[i--]));
+		if ((split[i]))
+			free(((split)[i]));
 		free(split);
 		split = NULL;
 	}

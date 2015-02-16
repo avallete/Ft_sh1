@@ -25,7 +25,7 @@ int		main(int ac, char **av, char **env)
 	inf.father = 0;
 	inf.paths = NULL;
 	e.infos = &inf;
-	while (1)
+	while (av[0])
 		print_inv(&e);
 	free_them_all(&e);
 	return (0);

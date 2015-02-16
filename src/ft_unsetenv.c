@@ -15,16 +15,27 @@
 void	ft_unsetenv(t_env *env, char *key)
 {
 	int i;
+	int e;
+	int f;
+	char **newenv;
 
 	i = 0;
+	e = 0;
+	f = 0;
 	if (env->infos->env)
 	{
 		if ((i = ft_findkey(env->infos->env, key)) > -1)
 		{
-			free(env->infos->env[i]);
-			env->infos->env[i] = ft_strdup(env->infos->env[SIZE_ENV - 1]);
-			free(env->infos->env[SIZE_ENV - 1]);
-			env->infos->env[SIZE_ENV - 1] = NULL;
+			newenv = (char**)malloc(sizeof(char*) * SIZE_ENV - 1);
+			while (e < SIZE_ENV)
+			{
+				if (e != i)
+					newenv[f] = ft_strdup(C_ENV[e]), f++;
+				e++;
+			}
+			newenv[f] = NULL;
+			ft_splitdel(C_ENV);
+			C_ENV = newenv;
 			SIZE_ENV -= 1;
 		}
 	}

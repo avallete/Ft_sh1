@@ -4,6 +4,7 @@ SRC_NAME:=check_cd.c\
     check_exit.c\
     clear_cmd.c\
     create_cmd.c\
+    check_cmd.c\
     env_error.c\
     env_rescue.c\
     errors.c\

@@ -29,7 +29,7 @@ char *make_good_path(char *path)
 		path = ft_strjoin(path, "/");
 		free(tmp);
 	}
-	return (ft_strdup(path));
+	return (path);
 }
 
 /*
