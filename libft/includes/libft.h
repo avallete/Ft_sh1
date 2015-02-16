@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 14:41:54 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/14 18:27:13 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/16 16:49:40 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ void				*ft_memmove(void *dst, const void *src, size_t n);
 void				*ft_memset(void *b, int c, size_t len);
 void				*ft_realloc(void *ptr, size_t size);
 void				*ft_calloc(size_t nmemb, size_t size);
+void				ft_secfree(void *ptr);
 
 /*
 ** List functions

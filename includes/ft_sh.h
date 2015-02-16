@@ -5,6 +5,7 @@
 # include <ft_printf.h>
 # include <signal.h>
 # include <sys/types.h>
+# include <sys/stat.h>
 # include <sys/param.h>
 # include <sys/wait.h>
 # include <limits.h>
@@ -32,6 +33,10 @@
 # define ETOOFEWARG(x) (ENAMEFORM(x), ft_puterrdl(" Too few arguments."))
 # define ENAMETOOLON(x) (ENAMEFORM(x), ft_puterrdl(" File name too long."))
 # define EPATHTOOLON(x) (ENAMEFORM(x), ft_puterrdl(" Path name too long."))
+# define EBADACCESS(x) (ENAMEFORM(x), ft_puterrdl(" No access permissions."))
+# define EBADFILE(x) (ENAMEFORM(x), ft_puterrdl(" No file or repository."))
+# define EBADDIR(x) (ENAMEFORM(x), ft_puterrdl(" is not a repository."))
+# define EBADLOOP(x) (ENAMEFORM(x), ft_puterrdl(" It's a f***ing loop."))
 
 
 typedef	struct		s_arg
@@ -112,8 +117,9 @@ void	ft_unsetenv(t_env *env, char *key);
 /*
 ** ft_cd
 */
-int	change_absrep(t_env *env, char *path);
-int	change_relrep(t_env *env, char *path);
+int		check_filerror(char *path, char *arg);
+int		change_absrep(t_env *env, char *path);
+int		change_relrep(t_env *env, char *path);
 
 /*
 ** misc_cd
