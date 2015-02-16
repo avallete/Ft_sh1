@@ -1,0 +1,6 @@
+launch the programm with env -i and try many unsetenv/setenv/envù
+Do enter many times.
+Try unsetenv many path names in same call unsetenv;
+Try unsetenv/env/cd/setenv in same commande line with ;
+Try commande with unsetenv anithing ; commande;
+Try env space commmande and see if commande launch.
