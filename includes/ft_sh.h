@@ -38,7 +38,7 @@
 # define EBADDIR(x) (ENAMEFORM(x), ft_puterrdl(" is not a repository."))
 # define EBADLOOP(x) (ENAMEFORM(x), ft_puterrdl(" It's a f***ing loop."))
 # define EINVALCMD(x) (ENAMEFORM(x), ft_puterrdl(" command not found"))
-
+# define ESETENVEG(x) (ENAMEFORM(x), ft_puterrdl("  No egual in keyvalue"))
 
 typedef	struct		s_arg
 {

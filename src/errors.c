@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/14 15:25:05 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/16 14:48:03 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/17 10:48:48 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ char	*format_envval(char *key, char *value)
 	size_t vallen;
 
 	(vallen = ft_strlen(value)) >= PATH_MAX ? EPATHTOOLON(value) : 0;
-	join = ft_strjoin(key, "=");
+	if (key[ft_strlen(key - 1)] != '=')
+		join = ft_strjoin(key, "=");
+	else
+		join = ft_strdup(key);
 	(keylen = ft_strlen(join)) >= PATH_MAX ? ENAMETOOLON(key) : 0;
 	tmp = join;
 	join = ft_strjoin(join, value);

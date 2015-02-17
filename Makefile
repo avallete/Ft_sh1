@@ -3,6 +3,7 @@ SRC_NAME:=check_cd.c\
     check_env.c\
     check_exit.c\
     clear_cmd.c\
+	check_setenv.c\
     create_cmd.c\
     check_cmd.c\
     env_error.c\
