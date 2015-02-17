@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 13:33:21 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/16 13:57:59 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/17 09:57:25 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	check_cd(t_env *env, t_cmd *list)
 	char	ret;
 
 	ret = 0;
-	if (list)
+	if (list && C_CARG(list) && *C_CARG(list))
 	{
 		if (!(ft_strcmp("cd", *C_CARG(list))))
 		{

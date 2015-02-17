@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 15:05:22 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/16 18:45:09 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/17 09:48:38 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_wait_cmd(t_env *env, char **buf)
 {
 	static int i = 0;
 
-	if (buf && *buf)
+	if (buf && *buf[0])
 		cmd_pushback(buf, i, &env->cmd), i++;
 }
 

@@ -33,20 +33,23 @@ void	check_cmd(t_env *env, t_cmd *list)
 	char *pathcmd;
 
 	pathcmd = NULL;
-	if ((pathcmd = find_commande(env, C_CARG(list)[0])))
+	if (list && C_CARG(list) && *C_CARG(list))
 	{
-		env->infos->father = fork();
-		if (!(check_toolongarg(C_CARG(list))))
+		if ((pathcmd = find_commande(env, C_CARG(list)[0])))
 		{
-			if (env->infos->father > 0)
-				wait(NULL);
-			if (env->infos->father == 0)
-				execve(pathcmd, C_CARG(list), C_ENV);
-			ft_secfree(pathcmd);
+			env->infos->father = fork();
+			if (!(check_toolongarg(C_CARG(list))))
+			{
+				if (env->infos->father > 0)
+					wait(NULL);
+				if (env->infos->father == 0)
+					execve(pathcmd, C_CARG(list), C_ENV);
+				ft_secfree(pathcmd);
+			}
 		}
+		else
+			EINVALCMD(C_CARG(list)[0]);
 	}
-	else
-		EINVALCMD(C_CARG(list)[0]);
 }
 
 void	read_list(t_env *env, t_cmd *list)

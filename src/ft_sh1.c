@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 15:11:30 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/14 12:09:21 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/17 09:36:10 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		main(int ac, char **av, char **env)
 	inf.father = 0;
 	inf.paths = NULL;
 	e.infos = &inf;
-	while (av[0])
+	while (1)
 		print_inv(&e);
 	free_them_all(&e);
 	return (0);

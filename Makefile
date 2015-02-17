@@ -35,40 +35,40 @@ LIBFT:=-L libft -lftprintf
 CFLAGS=-Wall -Wextra -Werror
 CC=-gcc
 NAME=ft_minishell1
-RED=\033[0;31m
-LBLUE=\033[1;34m
-CYAN=\033[0;36m
-ORANGE=\033[0;33m
+RED=\033[30;41m
+GREEN=\033[32m
+CYAN=\033[36m
+ORANGE=\033[33m
 NC=\033[0m
 
 all: $(NAME)
 
 $(NAME):$(OBJ)
 	@make -s -C libft
-	@echo "${RED}Compile $(NAME) with $(CFLAGS)${NC}";
+	@echo "${GREEN}Compile $(NAME) with $(CFLAGS)${NC}";
 	@gcc $(CLFAGS) $(OBJ) $(INC) $(LIBFT) -o $(NAME)
 
 easy:$(OBJ)
 	@make -s -C libft
-	@echo "${RED}Compile $(NAME) without $(CFLAGS)${NC}";
+	@echo "${GREEN}Compile $(NAME) without $(CFLAGS)${NC}";
 	@gcc $(OBJ) $(INC) $(LIBFT) -o $(NAME)
 
 debug:$(OBJ)
 	@make re -s -C libft
-	@echo "${RED}Compile $(NAME) with -g ${NC}";
+	@echo "${GREEN}Compile $(NAME) with -g ${NC}";
 	@gcc -g $(OBJ) $(INC) $(LIBFT) -o $(NAME)
 
 $(OBJ_PATH)%.o:$(SRC_PATH)%.c
 	@mkdir -p $(OBJ_PATH)
-	@echo "${ORANGE}Create bynary $@ with $<${NC}";
+	@echo "${ORANGE}Create bynary $(NAME) : $@ with $<${NC}";
 	@$(CC) $(CFLAGS) $(INC) -o $@ -c $<
 
 clean:
-	@echo "${CYAN}Delete OBJ files${NC}"
+	@echo "${RED} Delete OBJ files ${NC}"
 	@rm -rf $(OBJ_PATH)
 
 fclean: clean
-	@echo "${CYAN}Delete $(NAME) file${NC}"
+	@echo "${RED} Delete $(NAME) file ${NC}"
 	@rm -rf $(NAME)
 
 re: fclean all clean
