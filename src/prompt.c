@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 15:05:22 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/17 12:22:05 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/17 16:13:26 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,19 @@ void	ft_init_cmd(t_env *env)
 	i = 0;
 	svpoint = NULL;
 	buf = NULL;
-	while (!(get_next_line(0, &buf)))
-		get_next_line(0, &buf);
-	clear_cmd(buf);
-	svpoint = ft_strsplit(buf, ';');
-	while (svpoint[i])
-		ft_wait_cmd(env, &svpoint[i]), i++;
-	if (svpoint)
-		ft_splitdel(svpoint);
-	if (buf)
-		free(buf);
-	buf = NULL;
+	if (get_next_line(0, &buf))
+	{
+		clear_cmd(buf);
+		svpoint = ft_strsplit(buf, ';');
+		while (svpoint[i])
+			ft_wait_cmd(env, &svpoint[i]), i++;
+		if (svpoint)
+			ft_splitdel(svpoint);
+		if (buf)
+			free(buf);
+	}
+	else
+		exit(0);
 }
 
 void	print_inv(t_env *env)

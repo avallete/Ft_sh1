@@ -37,9 +37,9 @@ void	check_cmd(t_env *env, t_cmd *list)
 	{
 		if ((pathcmd = find_commande(env, C_CARG(list)[0])))
 		{
-			env->infos->father = fork();
 			if (!(check_toolongarg(C_CARG(list))))
 			{
+				env->infos->father = fork();
 				if (env->infos->father > 0)
 					wait(NULL);
 				if (env->infos->father == 0)

@@ -65,6 +65,7 @@ typedef struct		s_env
 {
 	t_cmd			*cmd;
 	t_inf			*infos;
+	char			*buf;
 }					t_env;
 
 /*
