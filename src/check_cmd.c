@@ -1,21 +1,34 @@
 #include <ft_sh.h>
 
+int		check_correctcmd(char *path)
+{
+	if (path)
+	{
+		if ((access(path, F_OK)) >= 0)
+		{
+			if (access(path, X_OK) >= 0 && access(path, R_OK) >= 0)
+				return (1);
+		}
+	}
+	return (0);
+}
+
 char	*find_commande(t_env *env, char *cmd)
 {
 	int i;
 	char *tmp;
 	char *good_path;
 
-	tmp = NULL;
 	i = 0;
-	good_path = NULL;
 	if (C_CPATH)
 	{
+		if (check_correctcmd(cmd))
+			return (ft_strdup(cmd));
 		while (C_CPATH[i] && *C_CPATH[i])
 		{
 			good_path = ft_strjoin(C_CPATH[i], "/");
 			tmp = ft_strjoin(good_path, cmd);
-			if (tmp && access(tmp, X_OK) > -1)
+			if (tmp && check_correctcmd(tmp))
 			{
 				ft_secfree(good_path);
 				return (tmp);
@@ -32,7 +45,6 @@ void	check_cmd(t_env *env, t_cmd *list)
 {
 	char *pathcmd;
 
-	pathcmd = NULL;
 	if (list && C_CARG(list) && *C_CARG(list))
 	{
 		if ((pathcmd = find_commande(env, C_CARG(list)[0])))

@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 13:30:09 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/17 12:45:17 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/17 17:55:18 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ char	check_env(t_env *env, t_cmd *list)
 		{
 			if (C_CARG(list)[1] == NULL)
 				ft_splitprint(C_ENV), (ret = 1);
+			else if (ft_strchr(C_CARG(list)[1], '='))
+				ft_splitprint(C_ENV), ft_putendl(C_CARG(list)[1]), ret = 1;
 			else
 				(C_CARG(list) = ft_resizesplit(C_CARG(list), 1, \
 											   ft_splitlen(C_CARG(list))));
