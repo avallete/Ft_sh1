@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 13:33:21 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/17 09:57:25 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/17 14:37:31 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,8 @@ char	check_cd(t_env *env, t_cmd *list)
 					go_oldpwd(env);
 				else if (C_CARG(list)[1][0] == '~')
 					go_tild(C_CARG(list)[1], env);
-				else if (C_CARG(list)[1][0] != '/')
-					change_relrep(env, C_CARG(list)[1]);
 				else
-					change_absrep(env, C_CARG(list)[1]);
+					change_rep(env, C_CARG(list)[1]);
 			}
 			else
 				go_home(env);

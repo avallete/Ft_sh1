@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 13:23:32 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/16 18:33:52 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/17 14:37:26 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	go_oldpwd(t_env *env)
 	oldpwd = ft_findkey(C_ENV, "OLDPWD");
 	if (oldpwd > -1)
 		oldpwdval = key_value(C_ENV[oldpwd]);
-	if (oldpwdval)
-		change_absrep(env, oldpwdval), free(oldpwdval), oldpwdval = NULL;
+	if (oldpwdval && *oldpwdval)
+		change_rep(env, oldpwdval), free(oldpwdval), oldpwdval = NULL;
 }
 
 /*
@@ -66,7 +66,7 @@ void	go_home(t_env *env)
 	if (home > -1)
 		homeval = key_value(C_ENV[home]);
 	if (homeval)
-		change_absrep(env, homeval), free(homeval), homeval = NULL;
+		change_rep(env, homeval), free(homeval), homeval = NULL;
 }
 
 /*
@@ -87,7 +87,7 @@ void	go_tild(char *tild, t_env *env)
 	if (homeval)
 	{
 		joinpath = ft_strjoin(homeval, tild+1);
-		change_absrep(env, joinpath);
+		change_rep(env, joinpath);
 		free(joinpath);
 		free(homeval);
 	}

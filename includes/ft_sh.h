@@ -125,9 +125,8 @@ void	ft_unsetenv(t_env *env, char *key);
 /*
 ** ft_cd
 */
-int		check_filerror(char *path, char *arg);
-int		change_absrep(t_env *env, char *path);
-int		change_relrep(t_env *env, char *path);
+int		check_filerror(char *path);
+int		change_rep(t_env *env, char *path);
 
 /*
 ** misc_cd
