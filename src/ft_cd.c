@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 13:22:23 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/17 16:24:40 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/18 13:05:02 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 
 int		check_filerror(char *path)
 {
-	struct	stat	lstat_s;
-	struct	stat	stat_s;
+	struct stat	lstat_s;
+	struct stat	stat_s;
 
 	if (((lstat(path, &lstat_s)) > -1))
 	{
@@ -41,11 +41,11 @@ int		check_filerror(char *path)
 	return (-1);
 }
 
-int	change_rep(t_env *env, char *path)
+int		change_rep(t_env *env, char *path)
 {
-	int ret;
-	char pwd[MAXPATHLEN];
-	char npath[MAXPATHLEN];
+	int		ret;
+	char	pwd[MAXPATHLEN];
+	char	npath[MAXPATHLEN];
 
 	getcwd(pwd, PATH_MAX);
 	ret = chdir(path);

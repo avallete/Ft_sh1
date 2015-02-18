@@ -6,21 +6,20 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 13:23:32 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/17 14:37:26 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/18 13:09:07 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_sh.h>
 
 /*
-** This function check if the path is end by a '/'
-** Return path if it is, return a new correct path if not.
+** All misc functions usefull for CD builtin
 */
 
-char *make_good_path(char *path)
+char	*make_good_path(char *path)
 {
-	size_t end;
-	char *tmp;
+	size_t	end;
+	char	*tmp;
 
 	end = ft_strlen(path);
 	if (path[end - 1] != '/')
@@ -32,15 +31,10 @@ char *make_good_path(char *path)
 	return (path);
 }
 
-/*
-** Function search OLDPWD value in env
-** She move the current rep in OLDPWD if found, do nothing else.
-*/
-
 void	go_oldpwd(t_env *env)
 {
-	int oldpwd;
-	char *oldpwdval;
+	int		oldpwd;
+	char	*oldpwdval;
 
 	oldpwd = -1;
 	oldpwdval = NULL;
@@ -51,14 +45,10 @@ void	go_oldpwd(t_env *env)
 		change_rep(env, oldpwdval), free(oldpwdval), oldpwdval = NULL;
 }
 
-/*
-** Same as precedent function but search HOME user value
-*/
-
 void	go_home(t_env *env)
 {
-	int	home;
-	char *homeval;
+	int		home;
+	char	*homeval;
 
 	homeval = NULL;
 	home = -1;
@@ -69,15 +59,11 @@ void	go_home(t_env *env)
 		change_rep(env, homeval), free(homeval), homeval = NULL;
 }
 
-/*
-** This function replace tild arg by HOME/path join str and go it.
-*/
-
 void	go_tild(char *tild, t_env *env)
 {
-	int	home;
-	char *homeval;
-	char *joinpath;
+	int		home;
+	char	*homeval;
+	char	*joinpath;
 
 	homeval = NULL;
 	home = -1;
@@ -86,7 +72,7 @@ void	go_tild(char *tild, t_env *env)
 		homeval = key_value(C_ENV[home]);
 	if (homeval)
 	{
-		joinpath = ft_strjoin(homeval, tild+1);
+		joinpath = ft_strjoin(homeval, tild + 1);
 		change_rep(env, joinpath);
 		free(joinpath);
 		free(homeval);

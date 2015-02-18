@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:45:38 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/16 10:19:58 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/18 13:08:18 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ void	ft_recreatenv(t_env *env, char *str)
 
 char	**copy_env(char **env, size_t size)
 {
-	char **ecop;
-	int i;
+	char	**ecop;
+	int		i;
 
 	i = 0;
 	if (env)

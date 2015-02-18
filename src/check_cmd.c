@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_cmd.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/02/18 12:55:18 by avallete          #+#    #+#             */
+/*   Updated: 2015/02/18 12:57:26 by avallete         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <ft_sh.h>
 
 int		check_correctcmd(char *path)
@@ -15,9 +27,9 @@ int		check_correctcmd(char *path)
 
 char	*find_commande(t_env *env, char *cmd)
 {
-	int i;
-	char *tmp;
-	char *good_path;
+	int		i;
+	char	*tmp;
+	char	*good_path;
 
 	i = 0;
 	if (C_CPATH)

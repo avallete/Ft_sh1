@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sh.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/02/18 13:09:38 by avallete          #+#    #+#             */
+/*   Updated: 2015/02/18 13:16:42 by avallete         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_SH_H
 # define FT_SH_H
 # include <libft.h>
@@ -72,99 +84,99 @@ typedef struct		s_env
 /*
 ** prompt
 */
-void	ft_wait_cmd(t_env *env, char **buf);
-void	ft_init_cmd(t_env *env);
-void	clear_cmd(char *str);
-void	print_inv(t_env *env);
+void				ft_wait_cmd(t_env *env, char **buf);
+void				ft_init_cmd(t_env *env);
+void				clear_cmd(char *str);
+void				print_inv(t_env *env);
 
 /*
 ** Grep env function
 */
-char	*key_value(char *env);
-int		ft_findkey(char **tab, char *str);
+char				*key_value(char *env);
+int					ft_findkey(char **tab, char *str);
 
 /*
 ** create_cmd
 */
 
-t_arg	*create_arg(char **args, int nb);
-t_cmd	*cmd_new(char **args, int nb);
-void	cmd_pushback(char **args, int nb, t_cmd **cmd);
+t_arg				*create_arg(char **args, int nb);
+t_cmd				*cmd_new(char **args, int nb);
+void				cmd_pushback(char **args, int nb, t_cmd **cmd);
 
 /*
 ** check_cmd
 */
-char	*find_commande(t_env *env, char *cmd);
-void	check_cmd(t_env *env, t_cmd *list);
-void	read_list(t_env *env, t_cmd *list);
+char				*find_commande(t_env *env, char *cmd);
+void				check_cmd(t_env *env, t_cmd *list);
+void				read_list(t_env *env, t_cmd *list);
 
 /*
 ** free
 */
-void	free_arg(t_arg *arg);
-void	free_cmd(t_cmd *cmd);
-void	free_them_all(t_env *env);
+void				free_arg(t_arg *arg);
+void				free_cmd(t_cmd *cmd);
+void				free_them_all(t_env *env);
 
 /*
 **clear commandes
 */
 
-void	clear_cmd(char *str);
+void				clear_cmd(char *str);
 
 /*
 **set_env
 */
 
-char	**copy_env(char **env, size_t size);
-void	ft_setenv(t_env *env, char *key, char *value);
-void	ft_recreatenv(t_env *env, char *str);
+char				**copy_env(char **env, size_t size);
+void				ft_setenv(t_env *env, char *key, char *value);
+void				ft_recreatenv(t_env *env, char *str);
 
 /*
 ** unset env
 */
-void	ft_unsetenv(t_env *env, char *key);
+void				ft_unsetenv(t_env *env, char *key);
 
 /*
 ** ft_cd
 */
-int		check_filerror(char *path);
-int		change_rep(t_env *env, char *path);
+int					check_filerror(char *path);
+int					change_rep(t_env *env, char *path);
 
 /*
 ** misc_cd
 */
-char	*make_good_path(char *path);
-void	go_oldpwd(t_env *env);
-void	go_home(t_env *env);
-void	go_tild(char *tild, t_env *env);
+char				*make_good_path(char *path);
+void				go_oldpwd(t_env *env);
+void				go_home(t_env *env);
+void				go_tild(char *tild, t_env *env);
 
 /*
 ** Env rescue
 */
-void	found_pathrescue(t_env *env);
-void	found_pwdrescue(t_env *env);
-void	found_usernamerescue(t_env *env);
-void	found_homerescue(t_env *env);
-void	rescue_env(t_env *env);
+void				found_pathrescue(t_env *env);
+void				found_pwdrescue(t_env *env);
+void				found_usernamerescue(t_env *env);
+void				found_homerescue(t_env *env);
+void				rescue_env(t_env *env);
 
 /*
 ** Buitins
 */
-char	check_builtin(t_env *env, t_cmd *list);
-char	check_env(t_env *env, t_cmd *list);
-char	check_setenv(t_env *env, t_cmd *list);
-char	check_unsetenv(t_env *env, t_cmd *list);
-char	check_cd(t_env *env, t_cmd *list);
-char	check_exit(t_env *env, t_cmd *list);
+char				check_builtin(t_env *env, t_cmd *list);
+char				check_env(t_env *env, t_cmd *list);
+char				check_setenv(t_env *env, t_cmd *list);
+char				check_unsetenv(t_env *env, t_cmd *list);
+char				check_cd(t_env *env, t_cmd *list);
+char				check_exit(t_env *env, t_cmd *list);
 
 /*
 ** Errors
 */
-char	check_toolongarg(char **cmd);
-char	*format_envval(char *key, char *value);
+char				check_toolongarg(char **cmd);
+char				*format_envval(char *key, char *value);
 
 /*
 ** Path sort/create/format/research
 */
-void	init_path(t_env *env);
+void				init_path(t_env *env);
 #endif

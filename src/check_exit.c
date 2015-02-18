@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 13:32:38 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/17 09:55:01 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/18 13:00:25 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	check_exit(t_env *env, t_cmd *list)
 {
 	char	ret;
-	int	e;
+	int		e;
 
 	ret = 0;
 	e = 0;
@@ -37,5 +37,3 @@ char	check_exit(t_env *env, t_cmd *list)
 	}
 	return (ret);
 }
-
-

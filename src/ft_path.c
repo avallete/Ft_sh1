@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 14:49:11 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/16 18:21:53 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/18 13:05:15 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	init_path(t_env *env)
 {
 	char	*envpath;
-	int	i;
+	int		i;
 
 	envpath = NULL;
 	if (C_CPATH)

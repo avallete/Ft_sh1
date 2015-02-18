@@ -6,14 +6,14 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 13:30:09 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/17 17:55:18 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/18 12:59:47 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
- ** This file find if cmd is a builtin type env
- ** he exectute them if cmd have valid argument and return error else
- */
+** This file find if cmd is a builtin type env
+** he exectute them if cmd have valid argument and return error else
+*/
 
 #include <ft_sh.h>
 
@@ -31,8 +31,8 @@ char	check_env(t_env *env, t_cmd *list)
 			else if (ft_strchr(C_CARG(list)[1], '='))
 				ft_splitprint(C_ENV), ft_putendl(C_CARG(list)[1]), ret = 1;
 			else
-				(C_CARG(list) = ft_resizesplit(C_CARG(list), 1, \
-											   ft_splitlen(C_CARG(list))));
+				(C_CARG(list) = ft_resizesplit(C_CARG(list), 1,\
+					ft_splitlen(C_CARG(list))));
 		}
 	}
 	return (ret);
@@ -40,8 +40,8 @@ char	check_env(t_env *env, t_cmd *list)
 
 char	check_unsetenv(t_env *env, t_cmd *list)
 {
-	char ret;
-	int	i;
+	char	ret;
+	int		i;
 
 	i = 1;
 	ret = 0;
@@ -51,12 +51,12 @@ char	check_unsetenv(t_env *env, t_cmd *list)
 		{
 			if (C_CARG(list)[1] == NULL)
 				ETOOFEWARG("unsetenv");
-				while (C_CARG(list)[i])
-				{
-					if (!(ft_strchr(C_CARG(list)[i], '=')))
-						ft_unsetenv(env, C_CARG(list)[i]);
-					i++;
-				}
+			while (C_CARG(list)[i])
+			{
+				if (!(ft_strchr(C_CARG(list)[i], '=')))
+					ft_unsetenv(env, C_CARG(list)[i]);
+				i++;
+			}
 			ret = 1;
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/14 15:25:05 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/17 10:48:48 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/18 13:02:27 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	check_toolongarg(char **cmd)
 {
-	int i;
-	char err;
+	int		i;
+	char	err;
 
 	i = 0;
 	err = 0;
@@ -30,10 +30,10 @@ char	check_toolongarg(char **cmd)
 
 char	*format_envval(char *key, char *value)
 {
-	char *tmp;
-	char *join;
-	size_t keylen;
-	size_t vallen;
+	char	*tmp;
+	char	*join;
+	size_t	keylen;
+	size_t	vallen;
 
 	(vallen = ft_strlen(value)) >= PATH_MAX ? EPATHTOOLON(value) : 0;
 	if (key[ft_strlen(key - 1)] != '=')

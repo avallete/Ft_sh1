@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 18:22:22 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/17 12:41:36 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/18 13:05:38 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	ft_unsetenv(t_env *env, char *key)
 {
-	int i;
-	int e;
-	int f;
-	char **newenv;
+	int		i;
+	int		e;
+	int		f;
+	char	**newenv;
 
 	i = 0;
 	e = 0;

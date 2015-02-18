@@ -6,11 +6,11 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 11:45:02 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/17 09:49:10 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/18 13:00:40 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <ft_sh.h>
+#include <ft_sh.h>
 
 /*
 **Functions in this file init structure of elements

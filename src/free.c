@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 12:18:18 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/16 13:56:11 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/18 13:04:18 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,6 @@ void	free_them_all(t_env *env)
 	}
 }
 
-/*
-** This function free arg structure malocated element 
-*/
-
 void	free_arg(t_arg *arg)
 {
 	if (arg->arg)
@@ -42,10 +38,6 @@ void	free_arg(t_arg *arg)
 		free(arg);
 	arg = NULL;
 }
-
-/*
-** This function move in all list cmd elements and free them
-*/
 
 void	free_cmd(t_cmd *cmd)
 {

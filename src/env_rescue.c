@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 14:46:41 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/16 14:46:42 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/18 13:01:56 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	found_pwdrescue(t_env *env)
 
 void	found_homerescue(t_env *env)
 {
-	struct passwd *home;
+	struct passwd	*home;
 	char			*homepath;
 
 	home = getpwuid(getuid());
@@ -39,8 +39,8 @@ void	found_homerescue(t_env *env)
 
 void	found_usernamerescue(t_env *env)
 {
-	struct passwd *home;
-	char		*name;
+	struct passwd	*home;
+	char			*name;
 
 	home = getpwuid(getuid());
 	name = ft_strdup(home->pw_name);
@@ -50,10 +50,10 @@ void	found_usernamerescue(t_env *env)
 
 void	found_pathrescue(t_env *env)
 {
-	int fd;
-	int ret;
-	int i;
-	char buf[PATH_MAX];
+	int		fd;
+	int		ret;
+	int		i;
+	char	buf[PATH_MAX];
 
 	i = 0;
 	ft_bzero(buf, PATH_MAX);
@@ -71,5 +71,3 @@ void	found_pathrescue(t_env *env)
 	if (fd > -1)
 		close(fd);
 }
-
-

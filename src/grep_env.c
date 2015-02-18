@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 13:25:56 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/17 12:37:38 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/18 13:06:19 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 */
 
 #include <ft_sh.h>
-
-/*
-** Function return a copy of the content find
-** after '=' key delimiter
-*/
 
 char	*key_value(char *env)
 {
@@ -34,11 +29,6 @@ char	*key_value(char *env)
 	else
 		return (ft_strdup(""));
 }
-
-/*
-** Function search "str" value in env tab
-** she return index position if found and -1 if not
-*/
 
 int		ft_findkey(char **tab, char *str)
 {

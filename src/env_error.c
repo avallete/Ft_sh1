@@ -6,11 +6,11 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/14 18:08:26 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/16 14:46:19 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/18 13:00:59 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<ft_sh.h>
+#include <ft_sh.h>
 
 void	rescue_env(t_env *env)
 {
@@ -29,5 +29,3 @@ void	rescue_env(t_env *env)
 			found_usernamerescue(env);
 	}
 }
-
-
