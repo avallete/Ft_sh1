@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/14 12:06:32 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/14 12:08:50 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/18 12:52:35 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	**ft_resizesplit(char **src, size_t begin, size_t end)
 {
-	char **new;
-	int	size;
-	int	i;
+	char	**new;
+	int		size;
+	int		i;
 
 	i = 0;
 	size = end - begin;

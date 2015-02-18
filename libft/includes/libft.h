@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 14:41:54 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/16 16:49:40 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/18 12:52:21 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
-#define FT_ABS(x)  (((x) < 0) ? -(x) : (x))
+# define FT_ABS(x)  (((x) < 0) ? -(x) : (x))
 
 typedef struct		s_list
 {
