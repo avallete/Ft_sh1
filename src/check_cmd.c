@@ -53,7 +53,7 @@ void	check_cmd(t_env *env, t_cmd *list)
 			{
 				env->infos->father = fork();
 				if (env->infos->father > 0)
-					wait(NULL);
+					waitpid(env->infos->father, NULL, 0);
 				if (env->infos->father == 0)
 					execve(pathcmd, C_CARG(list), C_ENV);
 				ft_secfree(pathcmd);

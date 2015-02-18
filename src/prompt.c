@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 15:05:22 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/17 16:13:26 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/18 12:44:13 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,19 @@ void	ft_init_cmd(t_env *env)
 			free(buf);
 	}
 	else
-		exit(0);
+		free_them_all(env), exit(0);
+}
+
+void	print_prompt(int sig)
+{
+	if (sig)
+		ft_putstr("\n$> ");
 }
 
 void	print_inv(t_env *env)
 {
 	rescue_env(env);
+	signal(SIGINT, print_prompt);
 	ft_putstr("$> ");
 	ft_init_cmd(env);
 	if (env->cmd)

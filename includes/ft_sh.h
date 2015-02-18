@@ -56,9 +56,10 @@ typedef	struct		s_cmd
 typedef struct		s_inf
 {
 	char			**env;
-	int			size_env;
+	int				size_env;
 	char			**paths;
 	pid_t			father;
+	pid_t			children;
 }					t_inf;
 
 typedef struct		s_env
