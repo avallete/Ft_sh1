@@ -49,16 +49,6 @@ $(NAME):$(OBJ)
 	@echo "${GREEN}Compile $(NAME) with $(CFLAGS)${NC}";
 	@gcc $(CLFAGS) $(OBJ) $(INC) $(LIBFT) -o $(NAME)
 
-easy:$(OBJ)
-	@make -s -C libft
-	@echo "${GREEN}Compile $(NAME) without $(CFLAGS)${NC}";
-	@gcc $(OBJ) $(INC) $(LIBFT) -o $(NAME)
-
-debug:$(OBJ)
-	@make re -s -C libft
-	@echo "${GREEN}Compile $(NAME) with -g ${NC}";
-	@gcc -g $(OBJ) $(INC) $(LIBFT) -o $(NAME)
-
 $(OBJ_PATH)%.o:$(SRC_PATH)%.c
 	@mkdir -p $(OBJ_PATH)
 	@echo "${ORANGE}Create bynary $(NAME) : $@ with $<${NC}";
