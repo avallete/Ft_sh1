@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/16 13:22:23 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/18 13:05:02 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/19 13:15:26 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		check_filerror(char *path)
 int		change_rep(t_env *env, char *path)
 {
 	int		ret;
-	char		*e;
+	char	*e;
 	char	pwd[MAXPATHLEN];
 	char	npath[MAXPATHLEN];
 
