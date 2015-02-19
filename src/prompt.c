@@ -14,8 +14,9 @@
 
 void	ft_wait_cmd(t_env *env, char **buf)
 {
-	static int i = 0;
+	int i;
 
+	i = 0;
 	if (buf && *buf[0])
 		cmd_pushback(buf, i, &env->cmd), i++;
 }

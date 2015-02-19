@@ -18,7 +18,7 @@ size_t	ft_splitlen(char **env)
 
 	i = 0;
 	if (env)
-		while (env[i])
-			i++;
+		while (env[i] != NULL)
+			i += 1;
 	return (i);
 }

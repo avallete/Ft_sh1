@@ -18,6 +18,7 @@ void	init_path(t_env *env)
 	int		i;
 
 	envpath = NULL;
+	i = -1;
 	if (C_CPATH)
 		ft_splitdel(C_CPATH);
 	i = ft_findkey(C_ENV, "PATH");
@@ -25,6 +26,6 @@ void	init_path(t_env *env)
 	{
 		envpath = ft_strdup(C_ENV[i] + 5);
 		C_CPATH = ft_strsplit(envpath, ':');
+		ft_secfree(envpath);
 	}
-	ft_secfree(envpath);
 }

@@ -44,16 +44,19 @@ int		check_filerror(char *path)
 int		change_rep(t_env *env, char *path)
 {
 	int		ret;
+	char		*e;
 	char	pwd[MAXPATHLEN];
 	char	npath[MAXPATHLEN];
 
-	getcwd(pwd, PATH_MAX);
+	e = getcwd(pwd, PATH_MAX);
 	ret = chdir(path);
 	if (ret > -1)
 	{
-		getcwd(npath, PATH_MAX);
-		ft_setenv(env, "OLDPWD", pwd);
-		ft_setenv(env, "PWD", npath);
+		if (e)
+			ft_setenv(env, "OLDPWD", pwd);
+		e = getcwd(npath, PATH_MAX);
+		if (e)
+			ft_setenv(env, "PWD", npath);
 		return (0);
 	}
 	check_filerror(path);

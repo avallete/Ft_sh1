@@ -51,7 +51,7 @@ static size_t			*ft_size_words(char const *s, char c, size_t nb_words)
 	size_t m;
 
 	ft_initialize_word(&i, &b, &m);
-	if (!(tab = (size_t*)malloc(sizeof(size_t) * nb_words)))
+	if (!(tab = (size_t*)malloc(sizeof(size_t) * (nb_words))))
 		return (NULL);
 	while (s[i] != '\0' && m < nb_words)
 	{
@@ -95,13 +95,13 @@ char					**ft_strsplit(char const *s, char c)
 		return (check_error(s, c));
 	h = ft_nb_words(s, c);
 	l = ft_size_words(s, c, h);
-	if (((result = (char**)malloc(sizeof(char*) * h + 1))))
+	if (((result = (char**)malloc(sizeof(char*) * (h + 1)))))
 	{
 		result[h] = NULL;
 		i = 0;
 		while (i != h)
 		{
-			result[i] = (char*)malloc(sizeof(char) * l[i] + 1);
+			result[i] = (char*)malloc(sizeof(char) * (l[i]) + 1);
 			ft_bzero(result[i], l[i] + 1);
 			while (*s == c)
 				s++;
