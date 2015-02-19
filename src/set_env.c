@@ -6,7 +6,7 @@
 /*   By: avallete <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/13 17:45:38 by avallete          #+#    #+#             */
-/*   Updated: 2015/02/18 13:08:18 by avallete         ###   ########.fr       */
+/*   Updated: 2015/02/19 12:10:49 by avallete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	**copy_env(char **env, size_t size)
 	{
 		if ((ecop = (char**)malloc(sizeof(char*) *(size + 1))))
 		{
-			while (i < size)
+			while (env[i] != NULL)
 				ecop[i] = ft_strdup(env[i]), i++;
 			ecop[size] = NULL;
 		}
